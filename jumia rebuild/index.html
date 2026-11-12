@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MY SHOP | Online Shopping Kenya</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<div class="top-bar">
+    Free delivery on selected orders | Shop with MY SHOP Kenya
+</div>
+
+
+<header class="header" id="home">
+
+    <a href="#home" class="logo">
+        MY<span>SHOP.</span>
+    </a>
+
+    <div class="search-box">
+        <input type="search" id="search"
+               placeholder="Search products, brands and more..."
+               aria-label="Search products">
+
+        <button onclick="searchProducts()">Search</button>
+    </div>
+
+    <div class="header-actions">
+        <button class="account-btn" onclick="showAccount()">
+            👤 Account
+        </button>
+
+        <button class="cart-btn" onclick="toggleCart()">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </button>
+    </div>
+
+</header>
+
+
+<nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Products</a>
+    <a href="#deals">Today's Deals</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+
+<section class="banner">
+
+    <div class="banner-content">
+
+        <p class="banner-tag">WELCOME TO MY SHOP</p>
+
+        <h1>Everything You Need, All in One Place!</h1>
+
+        <p>
+            Discover amazing products at affordable prices.
+            Shop electronics, fashion, beauty and home appliances.
+        </p>
+
+        <button onclick="shopNow()">Explore Products</button>
+
+    </div>
+
+    <div class="banner-decoration">
+        🛍️
+    </div>
+
+</section>
+
+
+<section class="benefits">
+
+    <div class="benefit">
+        <span>🚚</span>
+        <div>
+            <h3>Convenient Delivery</h3>
+            <p>Delivery information at checkout</p>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <span>💳</span>
+        <div>
+            <h3>Flexible Payment</h3>
+            <p>Explore available payment options</p>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <span>⭐</span>
+        <div>
+            <h3>Quality Products</h3>
+            <p>Products for everyday needs</p>
+        </div>
+    </div>
+
+    <div class="benefit">
+        <span>☎️</span>
+        <div>
+            <h3>Customer Support</h3>
+            <p>We are here to help</p>
+        </div>
+    </div>
+
+</section>
+
+
+<section class="categories" id="categories">
+
+    <div class="section-heading">
+        <h2>Shop By Category</h2>
+        <p>Explore our wide range of products</p>
+    </div>
+
+    <div class="category-list">
+
+        <button onclick="filterCategory('all')">
+            🛍️ All Products
+        </button>
+
+        <button onclick="filterCategory('electronics')">
+            📱 Electronics
+        </button>
+
+        <button onclick="filterCategory('fashion')">
+            👗 Fashion
+        </button>
+
+        <button onclick="filterCategory('accessories')">
+            ⌚ Accessories
+        </button>
+
+        <button onclick="filterCategory('home')">
+            🏠 Home Appliances
+        </button>
+
+        <button onclick="filterCategory('beauty')">
+            💄 Beauty
+        </button>
+
+        <button onclick="filterCategory('travel')">
+            🎒 Travel
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="deals" id="deals">
+
+    <div>
+        <p>LIMITED-TIME OFFERS</p>
+        <h2>Discover Great Deals Today!</h2>
+        <p>Find selected products at attractive prices.</p>
+    </div>
+
+    <button onclick="shopNow()">Shop Deals</button>
+
+</section>
+
+
+<section class="products" id="products">
+
+    <div class="section-heading">
+        <h2>Our Popular Products</h2>
+        <p>Explore our recommended selection</p>
+    </div>
+
+    <div class="product-controls">
+
+        <p id="product-count">12 products available</p>
+
+        <select id="sort-products" onchange="sortProducts()">
+            <option value="default">Sort Products</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name: A to Z</option>
+        </select>
+
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+        
+        <div class="product" data-category="electronics" data-price="15000">
+            <img src="images/phone.jpg" alt="Smartphone">
+            <span class="product-tag">Popular</span>
+            <h3>Smartphone</h3>
+            <p class="description">Modern smartphone with advanced features.</p>
+            <p class="price">KSh 15,000</p>
+            <p class="rating">★★★★★ (24 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="electronics" data-price="2000">
+            <img src="images/headphones.jpg" alt="Headphones">
+            <span class="product-tag">Popular</span>
+            <h3>Wireless Headphones</h3>
+            <p class="description">Comfortable headphones with clear sound.</p>
+            <p class="price">KSh 2,000</p>
+            <p class="rating">★★★★☆ (18 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="accessories" data-price="3500">
+            <img src="images/watch.jpg" alt="Smart Watch">
+            <h3>Smart Watch</h3>
+            <p class="description">Stylish smartwatch for everyday use.</p>
+            <p class="price">KSh 3,500</p>
+            <p class="rating">★★★★★ (12 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="travel" data-price="2500">
+            <img src="images/backpack.jpg" alt="Travel Backpack">
+            <h3>Travel Backpack</h3>
+            <p class="description">Spacious backpack for travel and school.</p>
+            <p class="price">KSh 2,500</p>
+            <p class="rating">★★★★☆ (15 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="electronics" data-price="55000">
+            <img src="images/laptop.jpg" alt="Laptop">
+            <span class="product-tag">Featured</span>
+            <h3>Student Laptop</h3>
+            <p class="description">Laptop suitable for study and work.</p>
+            <p class="price">KSh 55,000</p>
+            <p class="rating">★★★★★ (20 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="fashion" data-price="3000">
+            <img src="images/shoes.jpg" alt="Sneakers">
+            <h3>Casual Sneakers</h3>
+            <p class="description">Comfortable shoes for everyday activities.</p>
+            <p class="price">KSh 3,000</p>
+            <p class="rating">★★★★☆ (10 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="fashion" data-price="2800">
+            <img src="images/handbag.jpg" alt="Handbag">
+            <h3>Fashion Handbag</h3>
+            <p class="description">Elegant handbag with a spacious design.</p>
+            <p class="price">KSh 2,800</p>
+            <p class="rating">★★★★★ (8 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="electronics" data-price="32000">
+            <img src="images/television.jpg" alt="Television">
+            <h3>Smart Television</h3>
+            <p class="description">Enjoy entertainment on a smart screen.</p>
+            <p class="price">KSh 32,000</p>
+            <p class="rating">★★★★☆ (14 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="home" data-price="4500">
+            <img src="images/blender.jpg" alt="Blender">
+            <h3>Kitchen Blender</h3>
+            <p class="description">A useful appliance for your kitchen.</p>
+            <p class="price">KSh 4,500</p>
+            <p class="rating">★★★★☆ (11 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="beauty" data-price="1800">
+            <img src="images/perfume.jpg" alt="Perfume">
+            <h3>Luxury Perfume</h3>
+            <p class="description">A fragrance for everyday occasions.</p>
+            <p class="price">KSh 1,800</p>
+            <p class="rating">★★★★★ (16 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="electronics" data-price="4000">
+            <img src="images/speaker.jpg" alt="Bluetooth Speaker">
+            <h3>Bluetooth Speaker</h3>
+            <p class="description">Portable speaker with wireless connectivity.</p>
+            <p class="price">KSh 4,000</p>
+            <p class="rating">★★★★☆ (9 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+        
+        <div class="product" data-category="electronics" data-price="12000">
+            <img src="images/camera.jpg" alt="Digital Camera">
+            <h3>Digital Camera</h3>
+            <p class="description">Capture your favourite moments.</p>
+            <p class="price">KSh 12,000</p>
+            <p class="rating">★★★★★ (7 reviews)</p>
+            <button onclick="addToCart(this)">Add to Cart</button>
+        </div>
+
+    </div>
+
+    <p id="no-products" class="no-products">
+        No matching products found.
+    </p>
+
+</section>
+
+
+<section class="cart-panel" id="cart-panel">
+
+    <h2>🛒 Your Shopping Cart</h2>
+
+    <div id="cart-items">
+        Your cart is empty.
+    </div>
+
+    <h3>Total: KSh <span id="cart-total">0</span></h3>
+
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="toggleCart()">Continue Shopping</button>
+    <button onclick="goToCheckout()">Proceed to Checkout</button>
+
+</section>
+
+
+<section class="checkout" id="checkout">
+
+    <h2>Checkout</h2>
+
+    <p>Review your order and enter your delivery details.</p>
+
+    <form id="checkout-form" onsubmit="placeOrder(event)">
+
+        <input type="text" id="buyer-name"
+               placeholder="Full Name" required>
+
+        <input type="tel" id="buyer-phone"
+               placeholder="Phone Number" required>
+
+        <input type="text" id="buyer-address"
+               placeholder="Delivery Location" required>
+
+        <h3>Order Summary</h3>
+
+        <div id="checkout-items"></div>
+
+        <h3>Total: KSh <span id="checkout-total">0</span></h3>
+
+        <button type="submit">Place Demo Order</button>
+
+        <button type="button" onclick="closeCheckout()">
+            Continue Shopping
+        </button>
+
+    </form>
+
+</section>
+
+
+<section class="about" id="about">
+
+    <h2>About MY SHOP</h2>
+
+    <p>
+        MY SHOP is an online shopping demonstration platform
+        designed to make product discovery and shopping easier.
+        Our website brings together electronics, fashion,
+        accessories, beauty products and home appliances
+        in one convenient place.
+    </p>
+
+</section>
+
+
+<section class="reviews">
+
+    <h2>What Our Customers Say</h2>
+
+    <div class="review-container">
+
+        <div class="review">
+            <h3>John M.</h3>
+            <p class="stars">★★★★★</p>
+            <p>Great products and an easy shopping experience.</p>
+        </div>
+
+        <div class="review">
+            <h3>Sarah K.</h3>
+            <p class="stars">★★★★★</p>
+            <p>I love the product selection and simple website.</p>
+        </div>
+
+        <div class="review">
+            <h3>David O.</h3>
+            <p class="stars">★★★★☆</p>
+            <p>Good prices and a user-friendly design.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="newsletter">
+
+    <h2>Stay Updated!</h2>
+
+    <p>Subscribe to receive updates about new products and offers.</p>
+
+    <form onsubmit="subscribeNewsletter(event)">
+
+        <input type="email" id="newsletter-email"
+               placeholder="Enter your email address" required>
+
+        <button type="submit">Subscribe</button>
+
+    </form>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>Have a question? We would love to hear from you.</p>
+
+    <form onsubmit="sendMessage(event)">
+
+        <input type="text" id="customer-name"
+               placeholder="Your Name" required>
+
+        <input type="email" id="customer-email"
+               placeholder="Your Email" required>
+
+        <textarea id="customer-message"
+                  placeholder="Write your message..."
+                  required></textarea>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h2>MY<span>SHOP.</span></h2>
+            <p>Your convenient online shopping destination.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#about">About Us</a>
+        </div>
+
+        <div>
+            <h3>Customer Support</h3>
+            <a href="#contact">Contact Us</a>
+            <p>Delivery Information</p>
+            <p>Returns and Refunds</p>
+            <p>Help Centre</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+        © 2026 MY SHOP. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<a href="https://wa.me/254110600898"
+   class="whatsapp-button"
+   target="_blank"
+   rel="noopener noreferrer">
+    WhatsApp Support
+</a>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
